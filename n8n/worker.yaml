@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: n8n-worker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      service: n8n-worker
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        service: n8n-worker
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: worker
+          image: n8nio/n8n:latest
+          args: ["worker", "--concurrency=50"]
+          envFrom:
+          - configMapRef:
+              name: n8n-configmap-env
+          resources:
+            limits:
+              cpu: "1.0"
+              memory: "1024Mi"
+            requests:
+              cpu: "0.5"
+              memory: "512Mi"

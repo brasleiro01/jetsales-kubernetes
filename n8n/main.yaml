@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: n8n-main
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: n8n-main
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: n8n-main
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: main
+          image: n8nio/n8n:latest
+          args: ["start"]
+          envFrom:
+          - configMapRef:
+              name: n8n-configmap-env
+          resources:
+            limits:
+              cpu: "1.0"
+              memory: "1024Mi"
+            requests:
+              cpu: "0.5"
+              memory: "512Mi"
+      volumeMounts:
+        - name: n8n-data
+          mountPath: /data/.n8n  # Caminho onde o volume será montado no container
+    volumes:
+      - name: n8n-data
+        persistentVolumeClaim:
+          claimName: n8n-data 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: n8n-main
+spec:
+  type: ClusterIP
+  selector:
+    service: n8n-main
+  ports:
+    - port: 5678

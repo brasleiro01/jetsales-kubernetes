@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: n8n-webhook
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      service: n8n-webhook
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        service: n8n-webhook
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: webhook
+          image: n8nio/n8n:latest
+          args: ["webhook"]
+          envFrom:
+          - configMapRef:
+              name: n8n-configmap-env
+          resources:
+            limits:
+              cpu: "1.0"
+              memory: "1024Mi"
+            requests:
+              cpu: "0.5"
+              memory: "512Mi"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: n8n-webhook
+spec:
+  type: ClusterIP
+  selector:
+    service: n8n-webhook
+  ports:
+    - port: 5678
