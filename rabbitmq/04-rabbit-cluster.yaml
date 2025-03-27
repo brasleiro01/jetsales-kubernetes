@@ -39,7 +39,8 @@ spec:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 5Gi
+              storage: 5Gi  # Garantir que o PVC com 5GB será usado
+          storageClassName: longhorn 
     podManagementPolicy: OrderedReady
     template:
       spec:
