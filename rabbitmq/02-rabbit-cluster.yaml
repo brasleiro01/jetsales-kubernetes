@@ -32,7 +32,7 @@ spec:
       prometheus.return_per_object_metrics = false
       prometheus.path = /metrics
       prometheus.tcp.port =  15692
-      rabbitmq_management = true
+      rabbitmq.management = true
       listeners.tcp.default = 5672
       management.listener.port = 15672
     advancedConfig: ""
