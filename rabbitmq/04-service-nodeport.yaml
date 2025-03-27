@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: amqp
-  namespace: rabbitmq  # ou o namespace que você estiver utilizando
+  namespace: rabbit  # ou o namespace que você estiver utilizando
 spec:
   selector:
     app: rabbitmq  # Nome do label que identifica os pods que você quer expor
