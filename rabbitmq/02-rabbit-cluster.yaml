@@ -1,0 +1,60 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  labels:
+    app: rabbitmq
+  name: rabbitmq
+  namespace: rabbitmq
+spec:
+  replicas: 3
+  image: rabbitmq:3.11.10-management
+  service:
+    type: ClusterIP
+  rabbitmq:
+    additionalPlugins:
+      - rabbitmq_management
+      - rabbitmq_management_agent
+      - rabbitmq_web_dispatch
+      - rabbitmq_peer_discovery_k8s
+      - rabbitmq_prometheus
+    additionalConfig: |
+      cluster_formation.peer_discovery_backend = rabbitmq_peer_discovery_k8s
+      cluster_formation.k8s.host = kubernetes.default.svc.cluster.local
+      cluster_formation.k8s.address_type = hostname
+      vm_memory_high_watermark_paging_ratio = 0.85
+      disk_free_limit.relative = 1.0
+      cluster_formation.node_cleanup.interval = 10
+      cluster_partition_handling = autoheal
+      queue_master_locator = min-masters
+      loopback_users = none
+      default_user = jetsales
+      default_pass = jetsales
+      prometheus.return_per_object_metrics = false
+      prometheus.path = /metrics
+      prometheus.tcp.port =  15692
+      rabbitmq_management = true
+      listeners.tcp.default = 5672
+      management.listener.port = 15672
+    advancedConfig: ""
+  statefulSet:
+    volumeClaimTemplates:
+      - metadata:
+          name: rabbitmq-data
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 5Gi
+    podManagementPolicy: OrderedReady
+    template:
+      spec:
+        containers:
+          - name: rabbitmq
+            resources:
+              requests:
+                memory: "1Gi"        # Solicitação de memória
+                cpu: "1"             # Solicitação de CPU
+              limits:
+                memory: "2Gi"        # Limite de memória
+                cpu: "2"             # Limite de CPU
