@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ./manifests/01-mariadb-configmap.yaml
+- ./manifests/02-mariadb-secret.yaml
+- ./manifests/03-glpi-configmap.yaml
+- ./manifests/04-glpi-secret.yaml
+- ./manifests/05-glpi-pvc.yaml
+- ./manifests/06-mariadb-pvc.yaml
+- ./manifests/07-mariadb-statefulset.yaml
+- ./manifests/08-mariadb-job.yaml
+- ./manifests/09-glpi-deployment.yaml
+- ./manifests/10-glpi-job.yaml
+- ./manifests/11-glpi-cronjob.yaml
+- ./manifests/12-glpi-ingress.yaml

@@ -29,15 +29,3 @@ spec:
             requests:
               cpu: "0.5"
               memory: "512Mi"
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: n8n-webhook
-spec:
-  type: ClusterIP
-  selector:
-    service: n8n-webhook
-  ports:
-    - port: 5678

@@ -18,3 +18,10 @@ spec:
                 name: n8n-main
                 port:
                   number: 5678
+          - path: /metrics/
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n-main
+                port:
+                  number: 5678

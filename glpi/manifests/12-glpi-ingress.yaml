@@ -8,7 +8,6 @@ spec:
   tls: 
   - hosts: 
     - glpi-hml.jetsales.com.br
-    secretName: glpi-tls
   rules:
   - host: "glpi-hml.jetsales.com.br" 
     http:

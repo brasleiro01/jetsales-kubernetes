@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: oci-block-volume-glpi-files-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi  # Tamanho do PVC que será requisitado
+  storageClassName: oci-bv
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: oci-block-volume-glpi-marketplace-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi  # Tamanho do PVC que será requisitado
+  storageClassName: oci-bv
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: oci-block-volume-glpi-etc-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Mi  # Tamanho do PVC que será requisitado
+  storageClassName: oci-bv

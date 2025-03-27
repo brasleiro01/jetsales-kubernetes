@@ -47,12 +47,12 @@ spec:
         containers:
           - name: rabbitmq
             resources:
-              requests:
-                memory: "1Gi"        # Solicitação de memória
-                cpu: "1"             # Solicitação de CPU
-              limits:
-                memory: "2Gi"        # Limite de memória
-                cpu: "2"             # Limite de CPU
+            limits:
+              cpu: "2.0"
+              memory: "2024Mi"
+            requests:
+              cpu: "0.5"
+              memory: "512Mi"
         affinity:
           podAffinity: {}  # Não há afinidade de pod específica aqui
           podAntiAffinity:
@@ -64,13 +64,3 @@ spec:
                       values:
                         - rabbitmq
                 topologyKey: kubernetes.io/hostname  # Isso garante que os pods não sejam agendados no mesmo nó
-            nodeAffinity:
-              requiredDuringSchedulingIgnoredDuringExecution:
-                nodeSelectorTerms:
-                  - matchExpressions:
-                      - key: kubernetes.io/hostname
-                        operator: In
-                        values:
-                          - "12.0.10.145"
-                          - "12.0.10.192"
-                          - "12.0.10.205"
