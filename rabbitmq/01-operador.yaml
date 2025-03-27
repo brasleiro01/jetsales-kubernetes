@@ -5567,7 +5567,7 @@ metadata:
     app.kubernetes.io/name: rabbitmq-cluster-operator
     app.kubernetes.io/part-of: rabbitmq
   name: rabbitmq-cluster-leader-election-rolebinding
-  namespace: rabbit
+  namespace: rabbitmq
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -5575,7 +5575,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: rabbitmq-cluster-operator
-  namespace: rabbit
+  namespace: rabbitmq
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -5592,7 +5592,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: rabbitmq-cluster-operator
-  namespace: rabbitmqmq
+  namespace: rabbitmq
 ---
 apiVersion: apps/v1
 kind: Deployment
