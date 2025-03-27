@@ -63,9 +63,13 @@ spec:
                       values:
                         - rabbitmq
                 topologyKey: kubernetes.io/hostname  # Isso garante que os pods não sejam agendados no mesmo nó
-          nodeAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              nodeSelectorTerms:
-                - matchExpressions:
-                    - key: kubernetes.io/hostname
-                      operator: Exists  # Garante que o pod será agendado em qualquer nó disponível
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: kubernetes.io/hostname
+                        operator: In
+                        values:
+                          - "12.0.10.145"
+                          - "12.0.10.192"
+                          - "12.0.10.205"
