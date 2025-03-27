@@ -29,9 +29,6 @@ spec:
       default_pass = jetsales
       prometheus.return_per_object_metrics = false
       prometheus.path = /metrics
-      prometheus.tcp.port =  15692
-      listeners.tcp.default = 5672
-      management.listener.port = 15672
     advancedConfig: ""
   statefulSet:
     volumeClaimTemplates:
