@@ -11,10 +11,10 @@ spec:
   ingressClassName: traefik
   tls: 
   - hosts: 
-    - glpi.eftech.com.br
+    - glpi-hml.jetsales.com.br
     secretName: glpi-tls
   rules:
-  - host: "glpi.eftech.com.br" 
+  - host: "glpi-hml.jetsales.com.br" 
     http:
       paths:
       - path: /
