@@ -6,7 +6,7 @@ metadata:
   name: rabbitmq
   namespace: rabbitmq
 spec:
-  replicas: 3
+  replicas: 1
   image: rabbitmq:3.11.10-management
   service:
     type: ClusterIP
