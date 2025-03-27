@@ -93,6 +93,4 @@ resources:
 - ./manifests/setup/0prometheusagentCustomResourceDefinition.yaml
 - ./manifests/setup/0prometheusruleCustomResourceDefinition.yaml
 - ./manifests/setup/0scrapeconfigCustomResourceDefinition.yaml
-- ./manifests/setup/0servicemonitorCustomResourceDefinition.yaml
-- ./manifests/setup/0thanosrulerCustomResourceDefinition.yaml
 - ./manifests/setup/namespace.yaml
