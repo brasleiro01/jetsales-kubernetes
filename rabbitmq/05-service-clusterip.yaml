@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq-clusterip
+  labels:
+    app.kubernetes.io/name: rabbitmq
+spec:
+  selector:
+    app.kubernetes.io/name: rabbitmq
+  ports:
+    - protocol: TCP
+      port: 15622        # Porta interna para AMQP (RabbitMQ)
+      targetPort: 15692   # Porta das metrics
+      name: metrics
+    - protocol: TCP
+      port: 15672        # Porta interna para a interface de gerenciamento
+      targetPort: 15672  # Porta do container RabbitMQ para a interface de gerenciamento
+      name: management
+  type: ClusterIP
