@@ -4,7 +4,7 @@ metadata:
   labels:
     app: rabbitmq
   name: rabbitmq
-  namespace: rabbit
+  namespace: rabbitmq
 spec:
   replicas: 3
   image: rabbitmq:3.11.10-management
