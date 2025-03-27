@@ -52,3 +52,20 @@ spec:
               limits:
                 memory: "2Gi"        # Limite de memória
                 cpu: "2"             # Limite de CPU
+        affinity:
+          podAffinity: {}  # Não há afinidade de pod específica aqui
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - rabbitmq
+                topologyKey: kubernetes.io/hostname  # Isso garante que os pods não sejam agendados no mesmo nó
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: kubernetes.io/hostname
+                      operator: Exists  # Garante que o pod será agendado em qualquer nó disponível
