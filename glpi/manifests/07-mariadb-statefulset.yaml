@@ -57,14 +57,14 @@ spec:
           requests:
             memory: 256Mi
         volumeMounts:
-        - name: data
+        - name: oci-block-volume-mariadb-pvc
           mountPath: "/var/lib/mysql"
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       volumes: 
-      - name: data
+      - name: oci-block-volume-mariadb-pvc
         persistentVolumeClaim:
-          claimName: mariadb-data
+          claimName: oci-block-volume-mariadb-pvc
   updateStrategy:
     type: OnDelete
 status: 
