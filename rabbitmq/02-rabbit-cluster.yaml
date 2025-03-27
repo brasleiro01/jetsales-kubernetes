@@ -8,8 +8,6 @@ metadata:
 spec:
   replicas: 3
   image: rabbitmq:3.11.10-management
-  service:
-    type: ClusterIP
   rabbitmq:
     additionalPlugins:
       - rabbitmq_management
