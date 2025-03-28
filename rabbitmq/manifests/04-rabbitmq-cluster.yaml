@@ -33,13 +33,16 @@ spec:
   statefulSet:
     volumeClaimTemplates:
       - metadata:
-          name: rabbitmq-pvc
+          name: rabbitmq-data
+            mountPath: /var/lib/rabbitmq  # Volume persistente para dados
+          name: rabbitmq-data
+            mountPath: /var/lib/rabbitmq/mnesia
         spec:
           accessModes:
             - ReadWriteMany
           resources:
             requests:
-              storage: 10Gi  # Garantir que o PVC com 5GB será usado
+              storage: 5Gi  # Garantir que o PVC com 5GB será usado
           storageClassName: oci-bv
     podManagementPolicy: OrderedReady
     template:
@@ -53,14 +56,3 @@ spec:
             requests:
               cpu: "0.5"
               memory: "512Mi"
-        affinity:
-          podAffinity: {}  # Não há afinidade de pod específica aqui
-          podAntiAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              - labelSelector:
-                  matchExpressions:
-                    - key: app
-                      operator: In
-                      values:
-                        - rabbitmq
-                topologyKey: kubernetes.io/hostname  # Isso garante que os pods não sejam agendados no mesmo nó
