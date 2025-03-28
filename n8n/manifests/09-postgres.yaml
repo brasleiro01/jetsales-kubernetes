@@ -37,4 +37,4 @@ spec:
     volumes:
       - name: postgres-pvc
         persistentVolumeClaim:
-          claimName: oci-block-volume-postgres-pvc
+          claimName: postgres-pvc
