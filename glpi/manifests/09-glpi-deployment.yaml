@@ -29,23 +29,23 @@ spec:
         - containerPort: 9000
           name: fpm
         volumeMounts:
-        - name: oci-block-volume-glpi-files-pvc
+        - name: glpi-files
           mountPath: /var/lib/glpi
-        - name: oci-block-volume-glpi-etc-pvc
+        - name: glpi-etc
           mountPath: /etc/glpi
-        - name: oci-block-volume-glpi-marketplace-pvc
+        - name: glpi-marketplace 
           mountPath: /var/www/html/marketplace
         resources: {}
       volumes: 
-      - name: oci-block-volume-glpi-etc-pvc
+      - name: glpi-etc
         persistentVolumeClaim: 
-          claimName: oci-block-volume-glpi-etc-pvc
-      - name: oci-block-volume-glpi-files-pvc
+          claimName: glpi-etc
+      - name: glpi-files
         persistentVolumeClaim:
-          claimName: oci-block-volume-glpi-files-pvc
-      - name: oci-block-volume-glpi-marketplace-pvc
+          claimName: glpi-files
+      - name: glpi-marketplace 
         persistentVolumeClaim:
-          claimName: oci-block-volume-glpi-marketplace-pvc
+          claimName: glpi-marketplace 
 
 
 ---
