@@ -33,14 +33,14 @@ spec:
   statefulSet:
     volumeClaimTemplates:
       - metadata:
-          name: rabbitmq-data
+          name: rabbitmq-pvc
         spec:
           accessModes:
-            - ReadWriteOnce
+            - ReadWriteMany
           resources:
             requests:
-              storage: 5Gi  # Garantir que o PVC com 5GB será usado
-          storageClassName: longhorn 
+              storage: 10Gi  # Garantir que o PVC com 5GB será usado
+          storageClassName: oci-bv
     podManagementPolicy: OrderedReady
     template:
       spec:
