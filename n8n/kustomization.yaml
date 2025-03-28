@@ -3,8 +3,6 @@ kind: Kustomization
 resources:
 - ./manifests/01-configmaps-postgres.yaml
 - ./manifests/02-configmaps-n8n.yaml
-- ./manifests/03-pvc-postgres.yaml
-- ./manifests/04-pvc-n8n-main.yaml
 - ./manifests/05-redis.yaml
 - ./manifests/06-service-postgres.yaml
 - ./manifests/07-service-redis.yaml
