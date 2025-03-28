@@ -12,3 +12,4 @@ resources:
 - ./manifests/11-n8n-webhook.yaml
 - ./manifests/12-n8n-worker.yaml
 - ./manifests/13-n8n-ingress.yaml
+- ./manifests/14-service-webhook.yaml
