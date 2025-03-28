@@ -17,8 +17,6 @@ spec:
       labels:
         service: postgres
     spec:
-      imagePullSecrets:
-        - name: my-docker-secret
       restartPolicy: Always
       containers:
         - name: postgres
