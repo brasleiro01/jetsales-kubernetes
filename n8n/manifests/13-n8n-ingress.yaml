@@ -18,6 +18,20 @@ spec:
                 name: n8n-main
                 port:
                   number: 5678
+          - path: /webhook/
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n-webhook
+                port:
+                  number: 5678
+          - path: /webhook-waiting/
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n-webhook
+                port:
+                  number: 5678
           - path: /metrics/
             pathType: Prefix
             backend:
