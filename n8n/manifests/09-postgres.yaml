@@ -32,9 +32,9 @@ spec:
               cpu: "0.5"
               memory: "512Mi"
       volumeMounts:
-        - name: oci-block-volume-postgres-pvc
+        - name: postgres-pvc
           mountPath: /var/lib/postgresql/data
     volumes:
-      - name: oci-block-volume-postgres-pvc
+      - name: postgres-pvc
         persistentVolumeClaim:
           claimName: oci-block-volume-postgres-pvc
