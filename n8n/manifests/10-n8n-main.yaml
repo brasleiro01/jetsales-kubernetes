@@ -24,11 +24,11 @@ spec:
               name: n8n-configmap-env
           resources:
             limits:
-              cpu: "1.0"
-              memory: "1024Mi"
+              cpu: "0.3"
+              memory: "300Mi"
             requests:
-              cpu: "0.5"
-              memory: "512Mi"
+              cpu: "0.1"
+              memory: "100Mi"
       volumeMounts:
         - name: oci-block-volume-n8n-pvc
           mountPath: /data/.n8n  # Caminho onde o volume será montado no container

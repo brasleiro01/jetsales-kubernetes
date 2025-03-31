@@ -22,8 +22,8 @@ spec:
         image: redis:6-alpine
         resources:
           limits:
-            cpu: "1.0"
-            memory: "1024Mi"
-          requests:
             cpu: "0.5"
-            memory: "512Mi"
+            memory: "250Mi"
+          requests:
+            cpu: "0.1"
+            memory: "100Mi"
